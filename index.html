@@ -2,12 +2,18 @@
 <html lang="es-MX">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#0e2d27" />
+    <meta name="color-scheme" content="dark" />
     <meta name="description" content="Mi Dinero — tus finanzas personales, simples y claras." />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Mi Dinero" />
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="icon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="icon.svg" />
+    <link rel="icon" href="icon-192.png" sizes="192x192" type="image/png" />
+    <link rel="apple-touch-icon" href="icon-192.png" />
     <link rel="stylesheet" href="styles.css" />
     <title>Mi Dinero</title>
   </head>
@@ -18,7 +24,7 @@
           <p class="eyebrow" id="today-label">Lunes, 17 de agosto</p>
           <h1 id="page-title">Hola, Jaime</h1>
         </div>
-        <button class="avatar" type="button" aria-label="Abrir perfil">JR</button>
+        <button class="avatar" type="button" id="avatar-button" aria-label="Abrir perfil">JR</button>
       </header>
 
       <main id="app-content" tabindex="-1"></main>
@@ -38,7 +44,7 @@
       <div class="sheet-head">
         <button class="icon-button" id="close-sheet" type="button" aria-label="Cerrar">×</button>
         <h2 id="sheet-title">Nuevo gasto</h2>
-        <span class="head-spacer"></span>
+        <button class="icon-button danger" id="delete-transaction" type="button" aria-label="Eliminar movimiento" hidden>🗑</button>
       </div>
       <form id="transaction-form">
         <div class="type-switch" aria-label="Tipo de movimiento">
@@ -53,6 +59,17 @@
         <div id="transaction-fields"></div>
         <button class="primary-button save-button" type="submit" id="save-transaction">Guardar gasto</button>
       </form>
+    </section>
+
+    <div class="sheet-backdrop" id="mini-backdrop" hidden></div>
+    <section class="mini-sheet" id="mini-sheet" hidden>
+      <div class="sheet-handle"></div>
+      <div class="sheet-head">
+        <button class="icon-button" id="close-mini" type="button" aria-label="Cerrar">×</button>
+        <h2 id="mini-title">Título</h2>
+        <span class="head-spacer"></span>
+      </div>
+      <div id="mini-body"></div>
     </section>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
