@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0e2d27" />
+    <meta name="description" content="Mi Dinero — tus finanzas personales, simples y claras." />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Mi Dinero</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="today-label">Lunes, 17 de agosto</p>
+          <h1 id="page-title">Hola, Jaime</h1>
+        </div>
+        <button class="avatar" type="button" aria-label="Abrir perfil">JR</button>
+      </header>
+
+      <main id="app-content" tabindex="-1"></main>
+
+      <nav class="bottom-nav" aria-label="Navegación principal">
+        <button class="nav-item active" data-view="home" type="button"><span>⌂</span>Inicio</button>
+        <button class="nav-item" data-view="activity" type="button"><span>↕</span>Movimientos</button>
+        <button class="add-button" id="add-button" type="button" aria-label="Registrar movimiento"><span>＋</span>Registrar</button>
+        <button class="nav-item" data-view="analysis" type="button"><span>◔</span>Análisis</button>
+        <button class="nav-item" data-view="more" type="button"><span>⋯</span>Más</button>
+      </nav>
+    </div>
+
+    <div class="sheet-backdrop" id="sheet-backdrop" hidden></div>
+    <section class="transaction-sheet" id="transaction-sheet" aria-modal="true" aria-labelledby="sheet-title" role="dialog" hidden>
+      <div class="sheet-handle"></div>
+      <div class="sheet-head">
+        <button class="icon-button" id="close-sheet" type="button" aria-label="Cerrar">×</button>
+        <h2 id="sheet-title">Nuevo gasto</h2>
+        <span class="head-spacer"></span>
+      </div>
+      <form id="transaction-form">
+        <div class="type-switch" aria-label="Tipo de movimiento">
+          <button type="button" data-type="expense" class="selected">Gasto</button>
+          <button type="button" data-type="income">Ingreso</button>
+          <button type="button" data-type="transfer">Transferir</button>
+        </div>
+        <label class="amount-field">
+          <span id="amount-label">¿Cuánto gastaste?</span>
+          <div><i>$</i><input id="tx-amount" inputmode="decimal" autocomplete="off" placeholder="0" required /></div>
+        </label>
+        <div id="transaction-fields"></div>
+        <button class="primary-button save-button" type="submit" id="save-transaction">Guardar gasto</button>
+      </form>
+    </section>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
